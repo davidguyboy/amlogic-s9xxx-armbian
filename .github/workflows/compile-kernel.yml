@@ -21,7 +21,7 @@ on:
       kernel_version:
         description: "Select kernel version"
         required: false
-        default: "5.10.135_5.15.50"
+        default: "5.15.71"
         type: choice
         options:
           - 5.4.210_5.10.135_5.15.50
@@ -35,7 +35,7 @@ on:
       kernel_auto:
         description: "Auto use the latest kernel"
         required: false
-        default: true
+        default: false
         type: boolean
       kernel_package:
         description: "Select compile package list"
@@ -80,7 +80,7 @@ jobs:
           echo "::set-output name=status::success"
 
       - name: Compile the kernel
-        uses: ophub/amlogic-s9xxx-armbian@main
+        uses: davidguyboy/amlogic-s9xxx-armbian@main
         with:
           build_target: kernel
           kernel_repo: ${{ github.event.inputs.kernel_repo }}
